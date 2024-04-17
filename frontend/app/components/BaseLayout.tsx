@@ -1,9 +1,13 @@
 import SideNav from "./SideNav"
 import TopNav from "./TopNav"
+import CreateTransaction from "../transactions/CreateTransaction"
+
 
 export default function BaseLayout({ children }: any){
+
     return (
         <div className="flex h-screen ">
+            <CreateTransaction />
             <div className="hidden fixed inset-y-0 md:block">
                 <SideNav/>
             </div>
