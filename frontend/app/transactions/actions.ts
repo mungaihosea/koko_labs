@@ -1,6 +1,7 @@
 "use server";
 import { currentUser } from "@clerk/nextjs";
 import { createTransaction } from "../api";
+import { revalidatePath } from "next/cache";
 
 export const handleCreateTransaction = async (values: any) => {
     const loggedInUser = await currentUser()
@@ -8,5 +9,7 @@ export const handleCreateTransaction = async (values: any) => {
     console.log(payload)
     const createdTransaction = await createTransaction(payload)
     console.log(createdTransaction)
+    revalidatePath('/')
+    revalidatePath('/transactions')
     return createdTransaction
 }

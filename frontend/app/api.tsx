@@ -17,7 +17,7 @@ export async function createTransaction(transactionData: any): Promise<any> {
 
 
 export async function getTransactions(filters={}): Promise<any> {
-    const response = await axiosInstance.post('/transactions', {params: filters});
+    const response = await axiosInstance.get('/transactions', {params: filters});
     return await response.data
 }
 

@@ -3,8 +3,21 @@ import { Progress } from 'antd';
 import TransactionList from "./transactions/TransactionList";
 import { Button } from 'antd';
 import { GrTransaction } from "react-icons/gr";
+import { getTransactions } from "./api";
+import { currentUser } from "@clerk/nextjs";
 
-export default function Home() {
+export default async function Home() {
+
+  const loggedInUser = await currentUser()
+
+  // Transactions data fetching
+  const transactions = await getTransactions({user: loggedInUser?.id, page: 1, page_size: 5})
+  const expenseTransactions = await getTransactions({user: loggedInUser?.id, type: 'expense', page: 1, page_size: 5})
+  const incomeTransactions = await getTransactions({user: loggedInUser?.id, type: 'income', page: 1, page_size: 5})
+  const savingsTransactions = await getTransactions({user: loggedInUser?.id, type: 'savings', page: 1, page_size: 5})
+
+
+
   return (
     <BaseLayout>
       <div className="md:border rounded-md">
@@ -32,7 +45,7 @@ export default function Home() {
           <div className="flex-1 flex items-center justify-between space-y-1 rounded-xl bg-gray-100 p-8">
             <div>
               <div className="font-bold text-sm">All Transactions</div>
-              <div className="text-xl font-light">120</div>
+              <div className="text-xl font-light">{transactions.count}</div>
             </div>
             <div className="border rounded-full p-2 border-blue-500 text-blue-500">
               <GrTransaction className="text-xl" />
@@ -40,8 +53,8 @@ export default function Home() {
           </div>
           <div className="flex-1 flex items-center justify-between space-y-1 rounded-xl bg-gray-100 p-8">
             <div>
-              <div className="font-bold text-sm">Total Expenses</div>
-              <div className="text-xl font-light">120</div>
+              <div className="font-bold text-sm">Expense transactions</div>
+              <div className="text-xl font-light">{expenseTransactions.count}</div>
             </div>
             <div className="border rounded-full p-2 border-blue-500 text-blue-500">
               <GrTransaction className="text-xl" />
@@ -49,8 +62,8 @@ export default function Home() {
           </div>
           <div className="flex-1 flex items-center justify-between space-y-1 rounded-xl bg-gray-100 p-8">
             <div>
-              <div className="font-bold text-sm">Total Earnings</div>
-              <div className="text-xl font-light">120</div>
+              <div className="font-bold text-sm">Income transactions</div>
+              <div className="text-xl font-light">{incomeTransactions.count}</div>
             </div>
             <div className="border rounded-full p-2 border-blue-500 text-blue-500">
               <GrTransaction className="text-xl" />
@@ -58,8 +71,8 @@ export default function Home() {
           </div>
           <div className="flex-1 flex items-center justify-between space-y-1 rounded-xl bg-gray-100 p-8">
             <div>
-              <div className="font-bold text-sm">Total Savings</div>
-              <div className="text-xl font-light">120</div>
+              <div className="font-bold text-sm">Savings transactions</div>
+              <div className="text-xl font-light">{savingsTransactions.count}</div>
             </div>
             <div className="border rounded-full p-2 border-blue-500 text-blue-500">
               <GrTransaction className="text-xl" />
@@ -70,7 +83,7 @@ export default function Home() {
 
         <div className="md:px-8 pb-8 mt-4">
           <div className="mb-4 font-bold">Latest Transactions</div>
-          <TransactionList />
+          <TransactionList transactions={transactions} />
           <div className="mt-6"><Button type="primary">View all transactions</Button></div>
         </div>
       </div>

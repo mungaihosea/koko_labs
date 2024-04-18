@@ -26,6 +26,7 @@ export default function CreateTransaction(){
         setLoading(true)
         await handleCreateTransaction(values)
         setLoading(false)
+        handleCancel()
 
         console.log(values);
     };
