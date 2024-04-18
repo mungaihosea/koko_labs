@@ -40,7 +40,7 @@ export default function Home() {
           </div>
           <div className="flex-1 flex items-center justify-between space-y-1 rounded-xl bg-gray-100 p-8">
             <div>
-              <div className="font-bold text-sm">Total Expenditure</div>
+              <div className="font-bold text-sm">Total Expenses</div>
               <div className="text-xl font-light">120</div>
             </div>
             <div className="border rounded-full p-2 border-blue-500 text-blue-500">

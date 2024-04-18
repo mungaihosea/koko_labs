@@ -13,8 +13,9 @@ export default function SideNav(){
             </div>
             <SideNavItem title={'Dashboard'} icon={<LuLayoutDashboard />} path={'/'} />
             <SideNavItem title={'Transactions'} icon={<LuAlignStartVertical />} path={'/transactions'} />
-            <SideNavItem title={'Expenses'} icon={<LuLayoutDashboard />} path={'/expenses'} />
-            <SideNavItem title={'Goals'} icon={<LuAlarmClockOff />} path={'/pto'} />
+            <SideNavItem title={'Expense categories'} icon={<LuLayoutDashboard />} path={'/expenses'} />
+            <SideNavItem title={'Savings goals'} icon={<LuAlarmClockOff />} path={'/goals'} />
+            <SideNavItem title={'Visual Reports'} icon={<LuAlarmClockOff />} path={'/reports'} />
         </div>
     )
 }
