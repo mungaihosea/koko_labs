@@ -19,5 +19,3 @@ class StandardPaginator(PageNumberPagination):
             ('results', data)
         ]))
 
-
-    

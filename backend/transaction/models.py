@@ -21,3 +21,6 @@ class Transaction(BaseModel):
     ))
     description = models.TextField(null = True, blank = True)
 
+    class Meta:
+        ordering = ['-created_at']
+
