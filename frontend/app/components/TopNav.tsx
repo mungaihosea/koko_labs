@@ -9,7 +9,6 @@ import { capitalizeEachWord } from '../utils';
 export default async function TopNav () {
 
   const loggedInUser = await currentUser() as any
-  console.log(loggedInUser)
 
   return (
     <div className='border-b flex gap-4 items-center justify-between px-5 py-3 md:justify-end'>

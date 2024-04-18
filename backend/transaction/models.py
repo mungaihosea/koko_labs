@@ -15,7 +15,7 @@ class Transaction(BaseModel):
     user = models.CharField(max_length=255)
     amount = models.PositiveIntegerField()
     type = models.CharField(max_length=255, choices=(
-        ('saving', 'saving'),
+        ('savings', 'savings'),
         ('expense', 'expense'),
         ('income', 'income')
     ))

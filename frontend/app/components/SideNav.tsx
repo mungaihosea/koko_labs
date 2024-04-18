@@ -1,5 +1,5 @@
 import SideNavItem from "./SideNavItem";
-import { LuLayoutDashboard, LuAlignStartVertical, LuBuilding2, LuSettings, LuCheckCircle,LuSparkles, LuUsers2, LuSend, LuAlarmClockOff } from "react-icons/lu";
+import { LuLayoutDashboard, LuAlignStartVertical, LuAlarmClockOff } from "react-icons/lu";
 import Logo from "@/app/logo.png"
 import Image from "next/image";
 import { SlOrganization } from "react-icons/sl";
@@ -13,8 +13,8 @@ export default function SideNav(){
             </div>
             <SideNavItem title={'Dashboard'} icon={<LuLayoutDashboard />} path={'/'} />
             <SideNavItem title={'Transactions'} icon={<LuAlignStartVertical />} path={'/transactions'} />
-            <SideNavItem title={'Expense categories'} icon={<LuLayoutDashboard />} path={'/expenses'} />
-            <SideNavItem title={'Savings goals'} icon={<LuAlarmClockOff />} path={'/goals'} />
+            {/* <SideNavItem title={'Expense categories'} icon={<LuLayoutDashboard />} path={'/expenses'} /> */}
+            <SideNavItem title={'Saving Goals'} icon={<LuAlarmClockOff />} path={'/goals'} />
             <SideNavItem title={'Visual Reports'} icon={<LuAlarmClockOff />} path={'/reports'} />
         </div>
     )
