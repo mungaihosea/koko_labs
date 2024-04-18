@@ -5,6 +5,7 @@ import { Button } from 'antd';
 import { GrTransaction } from "react-icons/gr";
 import { getTransactions } from "./api";
 import { currentUser } from "@clerk/nextjs";
+import { LuApple, LuArrowDownLeft, LuArrowUpRight } from "react-icons/lu";
 
 export default async function Home() {
 
@@ -56,17 +57,17 @@ export default async function Home() {
               <div className="font-bold text-sm">Expense transactions</div>
               <div className="text-xl font-light">{expenseTransactions.count}</div>
             </div>
-            <div className="border rounded-full p-2 border-blue-500 text-blue-500">
-              <GrTransaction className="text-xl" />
-            </div>
+            <div className='rounded-full bg-yellow-500 p-2 text-white'>
+              <LuArrowUpRight className='text-xl' />
+          </div>
           </div>
           <div className="flex-1 flex items-center justify-between space-y-1 rounded-xl bg-gray-100 p-8">
             <div>
               <div className="font-bold text-sm">Income transactions</div>
               <div className="text-xl font-light">{incomeTransactions.count}</div>
             </div>
-            <div className="border rounded-full p-2 border-blue-500 text-blue-500">
-              <GrTransaction className="text-xl" />
+            <div className='rounded-full bg-blue-500 p-2 text-white'>
+                <LuArrowDownLeft className='text-xl' />
             </div>
           </div>
           <div className="flex-1 flex items-center justify-between space-y-1 rounded-xl bg-gray-100 p-8">
@@ -74,8 +75,8 @@ export default async function Home() {
               <div className="font-bold text-sm">Savings transactions</div>
               <div className="text-xl font-light">{savingsTransactions.count}</div>
             </div>
-            <div className="border rounded-full p-2 border-blue-500 text-blue-500">
-              <GrTransaction className="text-xl" />
+            <div className='rounded-full bg-green-500 p-2 text-white'>
+                <LuApple className='text-xl' />
             </div>
           </div>
           

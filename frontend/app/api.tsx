@@ -25,5 +25,25 @@ export async function getTransactionById(transactionId: any): Promise<any> {
     const response = await axiosInstance.get(`/transactions/${transactionId}`);
     return await response.data
 }
+
+
+
+// Goals
+export async function createGoal(goalData: any): Promise<any> {
+  const response = await axiosInstance.post('/goals', goalData);
+  return await response.data
+}
+
+
+export async function getGoals(filters={}): Promise<any> {
+    const response = await axiosInstance.get('/goals', {params: filters});
+    return await response.data
+}
+
+export async function getGoalById(goalId: any): Promise<any> {
+    const response = await axiosInstance.get(`/goals/${goalId}`);
+    return await response.data
+}
+  
   
   
