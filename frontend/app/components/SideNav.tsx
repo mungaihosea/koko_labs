@@ -12,7 +12,7 @@ export default function SideNav(){
                 <img src="/kokologo.png" width={100} className="mr-3" alt="Koko Logo" />
             </div>
             <SideNavItem title={'Dashboard'} icon={<LuLayoutDashboard />} path={'/'} />
-            <SideNavItem title={'Transactions'} icon={<LuAlignStartVertical />} path={'/timecards'} />
+            <SideNavItem title={'Transactions'} icon={<LuAlignStartVertical />} path={'/transactions'} />
             <SideNavItem title={'Expenses'} icon={<LuLayoutDashboard />} path={'/expenses'} />
             <SideNavItem title={'Goals'} icon={<LuAlarmClockOff />} path={'/pto'} />
         </div>

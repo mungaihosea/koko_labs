@@ -9,14 +9,16 @@ import { capitalizeEachWord } from '../utils';
 export default async function TopNav () {
 
   const loggedInUser = await currentUser() as any
-
+  console.log(loggedInUser)
 
   return (
     <div className='border-b flex gap-4 items-center justify-between px-5 py-3 md:justify-end'>
         <LuMenu className='block md:hidden text-2xl' />
         <div className='flex items-center gap-3'>
           <div className='text-end'>
-            <div className='text-xs'>{capitalizeEachWord(`${loggedInUser.firstName} ${loggedInUser.lastName}`)}</div>
+            {/* <div className='text-md font-bold'>{capitalizeEachWord(`${loggedInUser.firstName} ${loggedInUser.lastName}`)}</div> */}
+            <div className='text-xs font-bold'>{`${loggedInUser.firstName} ${loggedInUser.lastName}`.toUpperCase()}</div>
+            <div className='text-xs'>mungaihosea@gmail.com</div>
           </div>
           <UserButton />
         </div>
