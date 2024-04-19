@@ -20,7 +20,24 @@ class Transaction(BaseModel):
         ('income', 'income')
     ))
     description = models.TextField(null = True, blank = True)
-
     class Meta:
         ordering = ['-created_at']
 
+
+
+class RecurringTransaction(BaseModel):
+    user = models.CharField(max_length=255)
+    amount = models.PositiveIntegerField()
+    type = models.CharField(max_length=255, choices=(
+        ('savings', 'savings'),
+        ('expense', 'expense'),
+        ('income', 'income')
+    ))
+    description = models.TextField(null=True, blank=True)
+    frequency = models.CharField(max_length=50, choices=(
+        ('Daily', 'Daily'),
+        ('Weekly', 'Weekly'),
+        ('Monthly', 'Monthly'),
+        ('Minute', 'Minute')
+    ))  # Daily, Weekly, Monthly, etc.
+    next_execution_date = models.DateTimeField(auto_now_add=True)

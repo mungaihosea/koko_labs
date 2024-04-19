@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+
+  koko-backend:
+    image: koko-backend:latest
+    container_name: "koko-backend"
+    env_file: .env
+    build:
+      context: .
+    volumes:
+      - .:/app
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:80"
+    ports:
+      - 8000:80
+
+
+  koko-backend-celery-worker:
+    image: koko-backend:latest
+    container_name: "koko-backend-celery-worker"
+    env_file: .env
+    volumes:
+      - .:/app
+    command: bash -c "celery -A app worker --loglevel=info"
+    depends_on:
+      - koko-backend
+      
+
+
+  koko-backend-celery-beat:
+    image: koko-backend:latest
+    container_name: "koko-backend-celery-beat"
+    env_file: .env
+    volumes:
+      - .:/app
+    command: bash -c "celery -A app beat --loglevel=info"
+    depends_on:
+      - koko-backend
+  
+
+
+  koko-rabbitmq:
+    image: rabbitmq
+    container_name: koko-rabbitmq
+    ports:
+      - "5672:5672"  # RabbitMQ default port
+      - "15672:15672"  # RabbitMQ Management Console port

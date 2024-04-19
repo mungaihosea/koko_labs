@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Transaction
+from .models import Transaction, RecurringTransaction
 
 
 class TransactionSerializer(serializers.ModelSerializer):
@@ -8,3 +8,7 @@ class TransactionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class RecurringTransactionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RecurringTransaction
+        fields = '__all__'
