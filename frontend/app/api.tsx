@@ -28,6 +28,30 @@ export async function getTransactionById(transactionId: any): Promise<any> {
 
 
 
+// Recurring Transactions
+export async function createRecurringTransaction(transactionData: any): Promise<any> {
+  const response = await axiosInstance.post('/recurring_transactions', transactionData);
+  return await response.data
+}
+
+
+export async function getRecurringTransactions(filters={}): Promise<any> {
+    const response = await axiosInstance.get('/recurring_transactions', {params: filters});
+    return await response.data
+}
+
+export async function getRecurringTransactionById(transactionId: any): Promise<any> {
+    const response = await axiosInstance.get(`/recurring_transactions/${transactionId}`);
+    return await response.data
+}
+
+export async function deleteRecurringTransactionById(transactionId: any): Promise<any> {
+    const response = await axiosInstance.delete(`/recurring_transactions/${transactionId}`);
+    return await response.data
+}
+
+
+
 // Goals
 export async function createGoal(goalData: any): Promise<any> {
   const response = await axiosInstance.post('/goals', goalData);

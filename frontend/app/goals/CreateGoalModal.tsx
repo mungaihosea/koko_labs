@@ -68,7 +68,7 @@ export default function CreateGoalModal(){
                         <Form.Item >
                             <Space>
                             <Button loading={loading} type="primary" htmlType="submit">
-                                Submit
+                                Create
                             </Button>
                             
                             {/* <Button type="link" htmlType="button" onClick={onFill}>

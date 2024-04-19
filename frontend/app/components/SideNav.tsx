@@ -3,6 +3,8 @@ import { LuLayoutDashboard, LuAlignStartVertical, LuAlarmClockOff } from "react-
 import Logo from "@/app/logo.png"
 import Image from "next/image";
 import { SlOrganization } from "react-icons/sl";
+import { FaMedal } from "react-icons/fa";
+import { AiOutlineBarChart } from "react-icons/ai";
 
 
 export default function SideNav(){
@@ -13,9 +15,10 @@ export default function SideNav(){
             </div>
             <SideNavItem title={'Dashboard'} icon={<LuLayoutDashboard />} path={'/'} />
             <SideNavItem title={'Transactions'} icon={<LuAlignStartVertical />} path={'/transactions'} />
+            <SideNavItem title={'Recurring Transactions'} icon={<LuAlignStartVertical />} path={'/recurring_transactions'} />
             {/* <SideNavItem title={'Expense categories'} icon={<LuLayoutDashboard />} path={'/expenses'} /> */}
-            <SideNavItem title={'Goals'} icon={<LuAlarmClockOff />} path={'/goals'} />
-            <SideNavItem title={'Reports'} icon={<LuAlarmClockOff />} path={'/reports'} />
+            <SideNavItem title={'Goals'} icon={<FaMedal />} path={'/goals'} />
+            <SideNavItem title={'Reports'} icon={<AiOutlineBarChart />} path={'/reports'} />
         </div>
     )
 }

@@ -26,13 +26,13 @@ export default async function Goals(){
         <BaseLayout>
             <div className="mb-4">
                 <div className="flex items-center justify-between">
-                    <div className="text-xl font-bold flex items-center gap-3 cursor-pointer">
+                    <a href="/" className="text-xl font-bold flex items-center gap-3 cursor-pointer">
                         <LuArrowLeft />
                         <div>
                             Savings Goals
                             <p className="text-xs font-light">Manage your savings by creating goals.</p>
                         </div>
-                    </div>
+                    </a>
                     {!activeGoal && <CreateGoalModal/>}
                 </div>
             </div>

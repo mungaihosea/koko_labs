@@ -12,6 +12,7 @@ export default function TransactionTabs() {
         const transactionType = e.target.value
         const searchParams = new URLSearchParams(window.location.search);
         searchParams.set('type', String(transactionType))
+        searchParams.set('page', '1')
         const url = `${window.location.origin}${window.location.pathname}?${searchParams.toString()}`
         window.location.href = url
         setActiveTab(transactionType)
