@@ -1,8 +1,9 @@
 "use client";
 import React from 'react';
 import { List } from 'antd';
-import { LuArrowUpRight } from 'react-icons/lu';
 import { Progress } from 'antd';
+import { formatCurrency } from '../utils';
+import { getDatefromUTCString } from '../utils';
 
 
 const data = [
@@ -20,29 +21,28 @@ const data = [
   },
 ];
 
-export default function GoalsList(){
+export default function GoalsList({goals}: any){
     return (
         <>
             <List
                 size="large"
-                // header={<div>Header</div>}
-                // footer={<div>Footer</div>}
                 bordered
-                dataSource={data}
-                renderItem={(item) => <List.Item>
+                dataSource={goals.results}
+                renderItem={(goal: any) => <List.Item>
                     <div className='flex items-center gap-3 w-full'>
                         <div className='w-full'>
                             <div className='flex items-center justify-between'>
                                 <div>
-                                    <p>KES {item.title}</p>
+                                    <p>Current: {formatCurrency(goal.current_amount)}</p>
                                 </div>
                                 <div>
-                                    <p>Target: KES {item.title}</p>
+                                    <p>Target: {formatCurrency(goal.target_amount)}</p>
                                 </div>
                             </div>
-                            <p className='text-xs text-gray-500 mt-1 '>
-                                <Progress percent={50} status="active" />
+                            <p suppressHydrationWarning className='text-xs text-gray-500 mt-1 '>
+                                <Progress showInfo={false} percent={(goal.current_amount/goal.target_amount)* 100}  />
                             </p>
+                            <p className='text-xs text-gray-500'>{getDatefromUTCString(goal.created_at).toLocaleLowerCase()}</p>
 
                         </div>
                     </div>

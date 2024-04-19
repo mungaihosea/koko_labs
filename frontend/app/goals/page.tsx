@@ -3,9 +3,25 @@ import BaseLayout from "../components/BaseLayout"
 import { Button } from 'antd';
 import GoalsList from "./GoalsList";
 import Paginator from "../components/Paginator";
+import CreateGoalModal from "./CreateGoalModal";
+import { getGoals } from "../api";
+import { currentUser } from "@clerk/nextjs";
 
 
-export default function Goals(){
+export default async function Goals(){
+    const loggedInUser = await currentUser()
+    const goals = await getGoals({user: loggedInUser?.id})
+
+
+    const pendingGoals = await getGoals({user: loggedInUser?.id, dismissed: false})
+    let activeGoal = null
+
+    if (pendingGoals?.results.length > 0){
+        activeGoal = pendingGoals.results[0]
+    } else {
+        activeGoal = null
+    }
+
     return (
         <BaseLayout>
             <div className="mb-4">
@@ -14,18 +30,19 @@ export default function Goals(){
                         <LuArrowLeft />
                         <div>
                             Savings Goals
-                            <p className="text-xs font-light">Mangage your savings by creating goals.</p>
+                            <p className="text-xs font-light">Manage your savings by creating goals.</p>
                         </div>
                     </div>
-                    <Button type="primary">Create a goal</Button>
+                    {!activeGoal && <CreateGoalModal/>}
                 </div>
             </div>
 
             <div>
-                <GoalsList />
+                <GoalsList goals = {goals} />
             </div>
 
             <Paginator />
+
         </BaseLayout>
     )
 }

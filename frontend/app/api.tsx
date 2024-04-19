@@ -40,10 +40,17 @@ export async function getGoals(filters={}): Promise<any> {
     return await response.data
 }
 
+
 export async function getGoalById(goalId: any): Promise<any> {
     const response = await axiosInstance.get(`/goals/${goalId}`);
     return await response.data
 }
-  
-  
+
+
+export async function updateGoal(goalId: any, data: any): Promise<any> {
+    const response = await axiosInstance.patch(`/goals/${goalId}`, data);
+    return await response.data
+}
+
+
   

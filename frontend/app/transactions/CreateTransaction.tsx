@@ -83,18 +83,11 @@ export default function CreateTransaction(){
                             <Button loading={loading} type="primary" htmlType="submit">
                                 Submit
                             </Button>
-                            <Button htmlType="button" onClick={onReset}>
-                                Reset
-                            </Button>
-                            {/* <Button type="link" htmlType="button" onClick={onFill}>
-                                Fill form
-                            </Button> */}
                             </Space>
                         </Form.Item>
                     </Form>
                 </div>
 
-                {/* <p>Recurring transaction </p> if true create a field to select how often it occurs then create a celery chord*/} 
             </Modal>
         </div>
     )

@@ -16,9 +16,14 @@ class BaseModel(models.Model):
 
 class Goal(BaseModel):
     user = models.CharField(max_length=255)
-    current_amount = models.PositiveIntegerField()
+    current_amount = models.PositiveIntegerField(default = 0)
     target_amount = models.PositiveIntegerField()
-    acheived = models.BooleanField(default=False)
+    achieved = models.BooleanField(default=False)
     cancelled = models.BooleanField(default=False)
-    transactions = models.ManyToManyField(Transaction)
+    dismissed = models.BooleanField(default = False)
+    transactions = models.ManyToManyField(Transaction, blank=True)
+    description = models.TextField(null = True, blank= True)
+
+    def get_remaining_balance(self):
+        return (self.target_amount - self.current_amount)
     

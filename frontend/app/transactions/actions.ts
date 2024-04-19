@@ -11,5 +11,6 @@ export const handleCreateTransaction = async (values: any) => {
     console.log(createdTransaction)
     revalidatePath('/')
     revalidatePath('/transactions')
+    revalidatePath('/goals')
     return createdTransaction
 }
