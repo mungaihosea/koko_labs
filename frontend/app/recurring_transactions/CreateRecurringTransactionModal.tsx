@@ -1,10 +1,8 @@
 "use client";
 import React from 'react';
-import { Button, Modal,Form, Input, Select, Space  } from 'antd';
+import { Button,message, Modal,Form, Input, Select, Space  } from 'antd';
 import { useState } from 'react';
 import { handleCreateRecurringTransaction } from './actions';
-// import { createTransaction } from '../api';
-// import { handleCreateTransaction } from './actions';
 
 
 export default function CreateRecurringTransactionModal(){    
@@ -12,6 +10,7 @@ export default function CreateRecurringTransactionModal(){
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setLoading] = useState(false)
     const [form] = Form.useForm();
+    const [messageApi, contextHolder] = message.useMessage();
 
     const showModal = () => {
         setIsModalOpen(true);
@@ -27,13 +26,15 @@ export default function CreateRecurringTransactionModal(){
         await handleCreateRecurringTransaction(values)
         setLoading(false)
         handleCancel()
+        messageApi.info('Recurring transaction created successfully');
+        form.resetFields()
 
-        console.log(values);
     };
 
 
     return (
         <div>
+            {contextHolder}
             <Button type='primary' onClick={showModal}>Create recurring transaction</Button>
             <Modal title={<div className='font-bold'>Create Recurring Transaction</div>} footer={null} open={isModalOpen} onCancel={handleCancel} >
                 <div className='mt-7 w-full'>

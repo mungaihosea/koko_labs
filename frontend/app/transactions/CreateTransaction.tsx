@@ -2,9 +2,8 @@
 import React from 'react';
 import { FloatButton } from 'antd';
 import { IoMdAdd } from 'react-icons/io';
-import { Button, Modal,Form, Input, Select, Space  } from 'antd';
+import { Button, message, Modal,Form, Input, Select, Space  } from 'antd';
 import { useState } from 'react';
-// import { createTransaction } from '../api';
 import { handleCreateTransaction } from './actions';
 
 
@@ -13,6 +12,7 @@ export default function CreateTransaction(){
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setLoading] = useState(false)
     const [form] = Form.useForm();
+    const [messageApi, contextHolder] = message.useMessage();
 
     const showModal = () => {
         setIsModalOpen(true);
@@ -27,16 +27,15 @@ export default function CreateTransaction(){
         await handleCreateTransaction(values)
         setLoading(false)
         handleCancel()
-
-        console.log(values);
+        messageApi.info('Transaction created successfully');
+        form.resetFields()
     };
 
-    const onReset = () => {
-        form.resetFields();
-    };
+
 
     return (
         <div>
+            {contextHolder}
             <FloatButton type='primary' description={
                     <div style={{fontSize:'10px', fontWeight:'bold'}}>
                         New <br/>

@@ -1,10 +1,7 @@
 "use client";
 import React from 'react';
-import { FloatButton } from 'antd';
-import { IoMdAdd } from 'react-icons/io';
-import { Button, Modal,Form, Input, Select, Space  } from 'antd';
+import { Button, message, Modal,Form, Input, Select, Space  } from 'antd';
 import { useState } from 'react';
-import { createGoal } from '../api';
 import { FaMedal } from 'react-icons/fa';
 import { handleCreateGoal } from './actions';
 
@@ -14,6 +11,8 @@ export default function CreateGoalModal(){
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setLoading] = useState(false)
     const [form] = Form.useForm();
+    const [messageApi, contextHolder] = message.useMessage();
+    
 
     const showModal = () => {
         setIsModalOpen(true);
@@ -28,22 +27,13 @@ export default function CreateGoalModal(){
         await handleCreateGoal(values)
         setLoading(false)
         handleCancel()
-
-        console.log(values);
+        messageApi.info('Savings goal created successfully');
+        form.resetFields()
     };
 
     return (
         <div>
-            {/* <FloatButton type='primary' description={
-                    <div style={{fontSize:'10px', fontWeight:'bold'}}>
-                        New <br/>
-                        Transaction
-                    </div>
-                }
-                style={{width: '100px', height: '100px'}}
-                icon={<IoMdAdd className='text-2xl font-extrabold' />}
-                onClick={showModal} 
-            /> */}
+            {contextHolder}
             <Button type="primary" onClick={showModal}>Create a goal</Button>
             <Modal title={<div className='font-bold flex items-center gap-3'><FaMedal className='text-2xl text-blue-500' /> Create a savings goal</div>} footer={null} open={isModalOpen} onCancel={handleCancel} >
                 <div className='mt-7 w-full'>

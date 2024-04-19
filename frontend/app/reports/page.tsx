@@ -7,7 +7,7 @@ export default function Reports(){
     return (
         <BaseLayout>
             <a href="/" className="text-xl font-bold mb-4 flex items-center gap-3 cursor-pointer">
-                <LuArrowLeft /> Reports
+                <LuArrowLeft /> Transaction Reports
             </a>
 
             <Charts />

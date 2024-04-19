@@ -29,17 +29,3 @@ class RecurringTransactionViewSet(viewsets.ModelViewSet):
     search_fields = ['description']         # Database fields to search by
 
 
-    # def perform_create(self, serializer):
-    #     instance = serializer.save()
-    #     if instance.recurring:
-    #         # Schedule the recurring transaction task
-    #         frequency = instance.frequency  # Assuming frequency is part of the instance
-    #         if frequency == 'Daily':
-    #             execute_recurring_transactions.apply_async(eta=timezone.now() + timedelta(days=1))
-    #         elif frequency == 'Weekly':
-    #             execute_recurring_transactions.apply_async(eta=timezone.now() + timedelta(weeks=1))
-    #         elif frequency == 'Monthly':
-    #             execute_recurring_transactions.apply_async(eta=timezone.now() + timedelta(days=30))
-    #         elif frequency == 'Minute':
-    #             execute_recurring_transactions.apply_async(eta=timezone.now() + timedelta(minutes=1))
-    #         # Add more conditions for other frequencies as needed

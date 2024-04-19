@@ -5,7 +5,6 @@ import { useState } from 'react';
 export default function TransactionTabs() {
     const searchParams = new URLSearchParams(window.location.search) as any;
 
-    console.log(searchParams.get('type'))
     const [activeTab, setActiveTab] = useState(searchParams.get('type') ? searchParams.get('type') : '')
 
     const handleChangeTab = (e: any) => {

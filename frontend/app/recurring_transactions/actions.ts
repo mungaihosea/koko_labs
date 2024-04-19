@@ -7,9 +7,9 @@ import { revalidatePath } from "next/cache";
 export const handleCreateRecurringTransaction = async (values: any) => {
     const loggedInUser = await currentUser()
     const payload = {...values, user: loggedInUser?.id}
-    console.log(payload)
+
     const createdTransaction = await createRecurringTransaction(payload)
-    console.log(createdTransaction)
+
     revalidatePath('/')
     revalidatePath('/transactions')
     revalidatePath('/goals')

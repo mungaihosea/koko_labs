@@ -30,7 +30,7 @@ export default async function Home() {
     activeGoal = null
   }
 
-  console.log("Active goal", activeGoal)
+
 
 
   return (

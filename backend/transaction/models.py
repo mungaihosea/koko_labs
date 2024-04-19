@@ -9,6 +9,7 @@ class BaseModel(models.Model):
     
     class Meta:
         abstract = True
+        ordering = ['-created_at']
 
 
 class Transaction(BaseModel):
@@ -20,8 +21,8 @@ class Transaction(BaseModel):
         ('income', 'income')
     ))
     description = models.TextField(null = True, blank = True)
-    class Meta:
-        ordering = ['-created_at']
+
+        
 
 
 
@@ -41,3 +42,4 @@ class RecurringTransaction(BaseModel):
         ('Minute', 'Minute')
     ))  # Daily, Weekly, Monthly, etc.
     next_execution_date = models.DateTimeField(auto_now_add=True)
+

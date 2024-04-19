@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+
+  koko-frontend:
+    image: koko-frontend:latest
+    container_name: "koko-frontend"
+    env_file: .env.local
+    build:
+      context: .
+    volumes:
+      - .:/app
+    command: npm run dev
+    ports:
+      - 3000:80

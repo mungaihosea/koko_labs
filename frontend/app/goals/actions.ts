@@ -7,7 +7,7 @@ import { currentUser } from "@clerk/nextjs";
 export const handleCreateGoal = async (data: any) => {
     const loggedInUser = await currentUser()
     const payload = {...data, user: loggedInUser?.id}
-    console.log(payload)
+    
 
     const createdGoal = await createGoal(payload)
     revalidatePath('/')
@@ -18,7 +18,7 @@ export const handleCreateGoal = async (data: any) => {
 
 
 export const dismissGoal = async (goalId: any) => {
-    console.log('clicked')
+    
     const payload = {dismissed: true}
     await updateGoal(goalId, payload)
     revalidatePath('/')

@@ -5,7 +5,7 @@ import { Pagination } from 'antd';
 
 
 export default function Paginator({activePage, totalPages, totalItems}:any){
-    console.log(totalPages)
+
 
     const [currentPage, setCurrentPage] = useState(activePage);
 
