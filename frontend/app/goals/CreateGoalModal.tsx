@@ -45,7 +45,7 @@ export default function CreateGoalModal(){
                         className='w-full'
                         >
                         <Form.Item name="target_amount" label="Target amount" rules={[{ required: true }]}>
-                            <Input className='border border-green-500 w-full'/>
+                            <Input className='w-full'/>
                         </Form.Item>
                         <Form.Item
                             label="Description"

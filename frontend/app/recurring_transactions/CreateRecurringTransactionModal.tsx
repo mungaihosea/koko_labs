@@ -46,7 +46,7 @@ export default function CreateRecurringTransactionModal(){
                         className='w-full'
                         >
                         <Form.Item name="amount" label="Amount" rules={[{ required: true }]}>
-                            <Input className='border border-green-500 w-full'/>
+                            <Input className='w-full'/>
                         </Form.Item>
                         <Form.Item name="type" label="Transaction type" rules={[{ required: true }]} className='text-start w-full'>
                             <Select

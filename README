@@ -1,0 +1,28 @@
+This project is developed using the following stack:
+
+    Frontend: Next.js with TypeScript
+    Backend: Python (Django) with Django Rest Framework
+
+Getting Started
+
+To start the project, please ensure that Docker and Docker Compose are installed on your system.
+
+If you haven't installed Docker and Docker Compose yet, you can download and install them from the official Docker website:
+
+    Docker: https://docs.docker.com/get-docker/
+    Docker Compose: https://docs.docker.com/compose/install/
+
+Once Docker and Docker Compose are installed, follow these steps:
+
+    Clone the repository to your local machine.
+    Navigate to the project directory.
+    Run make up command to start the project.
+
+Dockerization
+
+The entire project is dockerized, utilizing two different Docker Compose files:
+
+    Backend: Docker Compose file for the Django backend.
+    Frontend: Docker Compose file for the Next.js frontend.
+
+Both docker compose file will be started with the "make up" command from the project's root folder
