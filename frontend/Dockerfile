@@ -14,6 +14,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies in /app
+RUN npm i -g next
 RUN npm install
 
 # Copy the rest of our Next.js folder into /app

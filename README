@@ -18,6 +18,11 @@ Once Docker and Docker Compose are installed, follow these steps:
     Navigate to the project directory.
     Run make up command to start the project.
 
+    Frontend URL: http://localhost:3000
+    Backend URL: http://localhost:8000
+
+    The backend has been document using swagger
+
 Dockerization
 
 The entire project is dockerized, utilizing two different Docker Compose files:
